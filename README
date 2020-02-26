@@ -1,0 +1,30 @@
+Client-server python script for "ping" over TCP or UDP (configurable).
+========================================================================
+
+Motivation:
+-----------
+Ping uses ICMP protocol to get IP end-points. It's not that useful when:
+   * There's no actual NAT, but only proxy (therefore the last mile for ping would only be the proxy server and not the
+     actual server behind).
+   * We want to check the firewall settings by testing the target TCP/UDP port, and not only by its IP.
+
+Structure:
+----------
+The script is built from a client side and a server side.
+The client supports several configurations such as: protocol, timeout, packet-size, etc.
+The client sends the "ping" data, and print results to console.
+
+Notes:
+------
+1. unit-tests.py - is  incomplete, because of the small scope of this exercise and the need to overcome initiating both
+server socket and client socket at the same call (throws: ""[WinError 10048] Only one usage of each socket address
+(protocol/network address/port) is normally permitted"). I guess using multiprocessing is an option.
+
+2. I chose to use python native socket instead of a different library (such as ZMQ), mainly because I wanted to keep
+this exercise as simple as possible.
+
+3. Future changes may include serving multiple requests at a time: https://realpython.com/python-sockets/,
+this client-server code is very basic. In addition supporting v6 IP addresses.
+
+4. Command line arguments are derived from MS ping executable:
+https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/ping.
