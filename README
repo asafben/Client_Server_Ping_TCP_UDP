@@ -20,8 +20,7 @@ Notes:
 server socket and client socket at the same call (throws: ""[WinError 10048] Only one usage of each socket address
 (protocol/network address/port) is normally permitted"). I guess using multiprocessing is an option.
 
-2. I chose to use python native socket instead of a different library (such as ZMQ), mainly because I wanted to keep
-this exercise as simple as possible.
+2. I chose to use python native socket instead of a different library (such as ZMQ), mainly because I wanted more practise at it.
 
 3. Future changes may include serving multiple requests at a time: https://realpython.com/python-sockets/,
 this client-server code is very basic. In addition supporting v6 IP addresses.
